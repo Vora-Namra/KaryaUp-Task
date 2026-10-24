@@ -8,7 +8,11 @@ import {
   ProjectRole,
 } from '../types';
 
-const API_BASE = '/api';
+export const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL || 'https://karyaup-task.onrender.com';
+
+export const API_BASE =
+  import.meta.env.VITE_API_URL || `${BACKEND_URL}/api`;
 
 const api = axios.create({
   baseURL: API_BASE,

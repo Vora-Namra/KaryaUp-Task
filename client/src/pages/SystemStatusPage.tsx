@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useProject } from '../context/ProjectContext';
-import { ticketService, projectService, sprintService, userService } from '../services/api';
+import { ticketService, projectService, sprintService, userService, BACKEND_URL, API_BASE } from '../services/api';
 import {
   Activity,
   CheckCircle2,
@@ -179,9 +179,21 @@ export const SystemStatusPage: React.FC = () => {
             <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Backend Service</h3>
           </div>
           <div style={{ fontSize: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ color: 'var(--text-muted)' }}>Target Host:</span>
-              <code style={{ color: 'var(--text-primary)' }}>http://localhost:5000</code>
+              <a
+                href={BACKEND_URL}
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: 'var(--accent-primary)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+              >
+                <code style={{ color: 'var(--accent-primary)', fontSize: '0.82rem' }}>{BACKEND_URL}</code>
+                <ExternalLink size={12} />
+              </a>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ color: 'var(--text-muted)' }}>API Endpoint:</span>
+              <code style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>{API_BASE}</code>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: 'var(--text-muted)' }}>Environment:</span>
